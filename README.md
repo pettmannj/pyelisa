@@ -9,17 +9,18 @@ The program will create a settings file with default settings if it is not found
 You can specifif the layout of your ELISA plate in the layout file.
 
 ## Settings
-dilution_factor: Results are multiplied by this number.
-exclude_saturated: If you want to automatically detect and exclude over-saturated standards.
-export_png: If you want to export the standard curve as PNG...
-export_svg: ..or SVG.
-extrapolate_bottom: How far below the lowest standard do you want to extrapolate? 1 = lowest standard; 0 = no limit
-extrapolate_top: How far above the highest standard do you want to extrapolate, e.g. 1.1 for 10% over the top standard.
-input_path: Folder in root path that holds the data.
-layout: Layout file in root folder.
-model: Which model to fit. 1 = Linear fit; 2 = 4 parameter sigmoidal fit; 3 = 5 parameter sigmoidal fit
-output_path: Folder in root path to export results.
-threshold_saturation: Threshold for saturation. 0.1 means that if the next standard does not increase by at least 10%, it is consider saturated and all preceeding standards are excluded as well.
+--- | ---
+dilution_factor | Results are multiplied by this number.
+exclude_saturated | If you want to automatically detect and exclude over-saturated standards.
+export_png | If you want to export the standard curve as PNG...
+export_svg | ..or SVG.
+extrapolate_bottom | How far below the lowest standard do you want to extrapolate? 1 = lowest standard; 0 = no limit
+extrapolate_top | How far above the highest standard do you want to extrapolate, e.g. 1.1 for 10% over the top standard.
+input_path | Folder in root path that holds the data.
+layout | Layout file in root folder.
+model | Which model to fit. 1 = Linear fit; 2 = 4 parameter sigmoidal fit; 3 = 5 parameter sigmoidal fit
+output_path | Folder in root path to export results.
+threshold_saturation | Threshold for saturation. 0.1 means that if the next standard does not increase by at least 10%, it is consider saturated and all preceeding standards are excluded as well.
 
 ## Layout
 Specify the layout in the layout.csv file. This should contain 12 columns named 1-12 and 8 rows named A-H.
