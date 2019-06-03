@@ -1,0 +1,11 @@
+dilution_factor: 5
+exclude_saturated: true
+export_png: true
+export_svg: false
+extrapolate_bottom: 0
+extrapolate_top: 1.1
+input_path: data
+layout: layout_full.csv
+model: 3
+output_path: results
+threshold_saturation: 0
