@@ -1,4 +1,4 @@
-# README PyELISA
+# PyELISA
 
 PyELISA is a Python script designed to help analysing ELISA data. It imports 96 well plate data, loads a user-defined layout, fits the standards, interpolates the samples and exports the results.
 
