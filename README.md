@@ -3,7 +3,7 @@
 PyELISA is a Python script designed to help analysing ELISA data. It imports 96 well plate data, loads a user-defined layout, fits the standards, interpolates the samples and exports the results.
 
 ## Running
-Run by invoking '''PyELISA --root-path=[]'''
+Run by invoking `PyELISA --root-path=[]`
 The root-path is the folder that contains the /data folder and the settings.txt file. Results will be saved in a /results folder.
 The program will create a settings file with default settings if it is not found.
 You can specifif the layout of your ELISA plate in the layout file.
