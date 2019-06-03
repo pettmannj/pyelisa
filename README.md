@@ -9,6 +9,7 @@ The program will create a settings file with default settings if it is not found
 You can specifif the layout of your ELISA plate in the layout file.
 
 ## Settings
+Test | Test
 --- | ---
 dilution_factor | Results are multiplied by this number.
 exclude_saturated | If you want to automatically detect and exclude over-saturated standards.
