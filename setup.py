@@ -23,7 +23,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='PyELISA',
-    version='0.1',
+    version='0.22',
     description='A program for automated analysis of ELISA data.',
     author='Johannes Pettmann',
     license='GNU GPLv3',
