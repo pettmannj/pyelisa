@@ -331,7 +331,7 @@ def export_csv(settings, data, fit_stats):
 @click.version_option()
 def main_cli(root_path):
     '''
-    PyELISA  Copyright (C) 2019  Johannes
+    PyELISA  Copyright (C) 2019  Johannes Pettmann
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it under certain conditions.
 
@@ -366,14 +366,13 @@ def main_cli(root_path):
     model = None
     
     #Select fitting model
-    if(settings['model'] == 1): model = fitting_models.Lin_model()
-    elif(settings['model'] == 2): model = fitting_models.Sig_4P_model()
-    elif(settings['model'] == 3): model = fitting_models.Sig_5P_model()
+    if(settings['model'] == 1): model = pyelisa.fitting_models.Lin_model()
+    elif(settings['model'] == 2): model = pyelisa.fitting_models.Sig_4P_model()
+    elif(settings['model'] == 3): model = pyelisa.fitting_models.Sig_5P_model()
     else:
         print('Selected model not found. Please select another model.')
         print('>>> Exiting application <<<')
         exit(0)
-    
 
     for k in data:
         #Substract blank
@@ -392,7 +391,7 @@ def main_cli(root_path):
 
                 max = v.mean()
 
-            if(idx!=None): std[k].drop(idx, axis='index', inplace=True) #Remove saturated values
+            if(idx is not None): std[k].drop(idx, axis='index', inplace=True) #Remove saturated values
             
         #Fit standards
         popt, pcov = model.fit(std[k])
