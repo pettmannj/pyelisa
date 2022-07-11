@@ -1,29 +1,38 @@
-# PyELISA
+# Jupyter PyELISA
+Version: 1.0.0a  
+Author: Johannes Pettmann
+License: GNU General Public License v3
 
-PyELISA is a Python script designed to help analysing ELISA data. It imports 96 well plate data, loads a user-defined layout, fits the standards, interpolates the samples and exports the results.
+Fits ELISA standards with a 4 parameter sigmoidal function and interpolates the concentration of any unkown samples.
+Open PyELISA.ipynb with Jupyter and follow the instructions.
 
-## Running
-Run by invoking `PyELISA --root-path=[]`
-The root-path is the folder that contains the /data folder and the settings.txt file. Results will be saved in a /results folder.
-The program will create a settings file with default settings if it is not found.
-You can specifif the layout of your ELISA plate in the layout file.
+## Requirements
+* Python 3.8< (sry, I really like syntactic sugar ;-))
+* ipython/jupyter
+* numpy, pandas, scipy, matplotlib
+* (Optional) ipywidgets for UX. See [here](https://ipywidgets.readthedocs.io/en/latest/user_install.html) for details on how to install.
+
+### Data
+Each plate data should be supplied as a CSV file. Any file in the data path will be analysed separately in one run. Files in subfolders will be ignored.
+
+### Layout
+The layout of the plate can be supplied as layout file. Layout files are CSV files that start with 'layout'. They contain the location and concentrations of the standards and blanks.
+Furthermore, they can be used to adjust for any sample position. For example, if the samples are transposed when put on the plate. The results will be correctly oriented.
 
 ## Settings
-Setting | Description
-------- | -----------
-dilution_factor | Results are multiplied by this number.
-exclude_saturated | If you want to automatically detect and exclude over-saturated standards.
-export_png | If you want to export the standard curve as PNG...
-export_svg | ..or SVG.
-extrapolate_bottom | How far below the lowest standard do you want to extrapolate? 1 = lowest standard; 0 = no limit
-extrapolate_top | How far above the highest standard do you want to extrapolate, e.g. 1.1 for 10% over the top standard.
-input_path | Folder in root path that holds the data.
-layout | Layout file in root folder.
-model | Which model to fit. 1 = Linear fit; 2 = 4 parameter sigmoidal fit; 3 = 5 parameter sigmoidal fit
-output_path | Folder in root path to export results.
-threshold_saturation | Threshold for saturation. 0.1 means that if the next standard does not increase by at least 10%, it is consider saturated and all preceeding standards are excluded as well.
+Settings can be adjusted manually (e.g. setting.figure_resolution = 200) or optionally with the ipythonwidget user interface. 
+If only text is shown for the cell below, ipythonwidgets are not installed correctly.
+* *dilution_factor:* Dilution factor used for samples. Doesn't change the fitting. Default: 1
+* *exclude_saturated:* Should oversaturated standards (i.e. OD of standards decreases at increasing doses) be excluded. Default: True
+* *extrapolate_top:* How farover the top standard concentration to extrapolate. E.g. for a top standard of 500, 1.5 would allow extrapolation up to 750. Default: 1.0
+* *fitting_model:* Fitting model to be used. SigModel5P (5 parameter sigmoidal model) is experimental only. Default: SigModel4P (4 parameter sigmoidal model)
+* *data_path:* Folder with data files. Ignores data in subfolders. Default: /data
+* *result_path:* Folder where results should be saved: Default: /results
+* *data_extension:* Extension of data files. Default: .csv
+* *layout_filepath:* Path to layout file. Default: layout_full.csv
+* *export_results:* Export results data? Default: False
+* *export_figures:* Export figures? Default: False
+* *figure_type:* File format for figures. Can be .pdf, .svg, .png. Default: .pdf
+* *figure_resolution:* Resolution of figure if using .png. Default: 150
 
-## Layout
-Specify the layout in the layout.csv file. This should contain 12 columns named 1-12 and 8 rows named A-H.
-Standards can be specified by number, e.g. 500 or 0 for blank.
-Samples can be specified by the well number they are in, e.g. B4. The results will be reshaped based on these coordinates, i.e. a "B4" that on A1 in the input file will be on B4 in the output file.
+**Note:** Clicking on the number next to a slider lets you change the number directly.
